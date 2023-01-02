@@ -66,7 +66,11 @@ func (r Request) body() (io.ReadCloser, error) {
 	if err != nil {
 		return nil, err
 	}
-
+	
+	content, err := ioutil.ReadAll(resp.Body)
+	fmt.Println(string(string(content)))
+	fmt.Println(string(err.Error()))
+	
 	limit := r.Limit // check file size limit
 	if limit > 0 && resp.ContentLength > limit {
 		_ = resp.Body.Close()
