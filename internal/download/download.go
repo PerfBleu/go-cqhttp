@@ -70,8 +70,12 @@ func (r Request) body() (io.ReadCloser, error) {
 	}
 	
 	content, err := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(string(content)))
-	fmt.Println(string(err.Error()))
+	fmt.SPrintf(string(string(content)))
+	fmt.SPrintf("\n")
+	if err != nil{
+		fmt.SPrintf(string(err.Error()))
+	}
+	fmt.SPrintf("\n")
 	
 	limit := r.Limit // check file size limit
 	if limit > 0 && resp.ContentLength > limit {
